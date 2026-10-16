@@ -2,7 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 
-Route::inertia('/', 'app')->name('home');
+Route::view('/', 'home')->name('home');
 
 Route::middleware(['auth', 'verified'])->group(function () {
     Route::inertia('dashboard', 'Dashboard')->name('dashboard');
