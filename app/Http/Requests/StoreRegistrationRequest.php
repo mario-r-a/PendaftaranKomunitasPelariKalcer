@@ -31,7 +31,7 @@ class StoreRegistrationRequest extends FormRequest
             'name.required'             => 'Nama lengkap wajib diisi.',
             'email.required'            => 'Alamat email wajib diisi.',
             'email.email'               => 'Format email tidak valid.',
-            'email.unique'              => 'Email ini sudah terdaftar. Silakan gunakan email lain.',
+            'email.unique'              => 'Email ini sudah terdaftar sebelumnya. Pendaftaran gagal dikirim.',
             'phone.required'            => 'Nomor telepon wajib diisi.',
             'kategori_lari.required'    => 'Pilih kategori lari.',
             'kategori_lari.in'          => 'Kategori lari tidak valid.',

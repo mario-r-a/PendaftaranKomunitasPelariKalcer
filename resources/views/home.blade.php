@@ -388,20 +388,26 @@
                 <p class="text-amber-700">Isi formulir di bawah. Konfirmasi langsung dikirim ke emailmu.</p>
             </div>
 
-            {{-- Errors --}}
+            {{-- Errors Banner --}}
             @if ($errors->any())
-                <div class="mb-6 bg-red-50 border border-red-200 text-red-700 rounded-2xl px-5 py-4">
-                    <p class="font-bold text-sm mb-2 flex items-center gap-2">
-                        <svg class="w-4 h-4 text-red-500" fill="currentColor" viewBox="0 0 20 20">
-                            <path fill-rule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7 4a1 1 0 11-2 0 1 1 0 012 0zm-1-9a1 1 0 00-1 1v4a1 1 0 102 0V6a1 1 0 00-1-1z" clip-rule="evenodd"/>
-                        </svg>
-                        Harap perbaiki kesalahan berikut:
-                    </p>
-                    <ul class="list-disc list-inside text-sm space-y-1">
-                        @foreach ($errors->all() as $error)
-                            <li>{{ $error }}</li>
-                        @endforeach
-                    </ul>
+                <div id="form-error-alert" class="mb-6 bg-red-50 border-2 border-red-300 text-red-800 rounded-2xl p-5 shadow-lg shadow-red-100 animate-bounce-short">
+                    <div class="flex items-start gap-3">
+                        <div class="w-10 h-10 rounded-xl bg-red-100 border border-red-200 flex items-center justify-center text-red-600 flex-shrink-0 text-xl font-bold">
+                            ⚠️
+                        </div>
+                        <div class="flex-1">
+                            <h3 class="font-extrabold text-base text-red-900 mb-1">Pendaftaran Gagal Dikirim!</h3>
+                            <p class="text-xs text-red-600 mb-3">Terdapat kesalahan data sehingga email konfirmasi belum dapat diproses:</p>
+                            <ul class="space-y-1.5 text-sm font-semibold">
+                                @foreach ($errors->all() as $error)
+                                    <li class="flex items-center gap-2 text-red-700 bg-white/70 px-3 py-1.5 rounded-lg border border-red-200">
+                                        <span class="text-red-500 font-bold">•</span>
+                                        {{ $error }}
+                                    </li>
+                                @endforeach
+                            </ul>
+                        </div>
+                    </div>
                 </div>
             @endif
 
@@ -577,6 +583,16 @@
         window.addEventListener('scroll', () => {
             navbar.classList.toggle('scrolled', window.scrollY > 30);
         });
+
+        // Auto scroll ke form jika ada error validasi
+        @if ($errors->any())
+            window.addEventListener('DOMContentLoaded', () => {
+                const formSection = document.getElementById('daftar');
+                if (formSection) {
+                    formSection.scrollIntoView({ behavior: 'smooth' });
+                }
+            });
+        @endif
     </script>
 
 </body>
