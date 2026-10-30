@@ -240,10 +240,10 @@
                 {{-- Right: Hero image --}}
                 <div class="order-1 lg:order-2 fade-up-2">
                     <div class="hero-img-wrap relative">
-                        <div class="rounded-2xl overflow-hidden shadow-2xl shadow-orange-200 border-4 border-white/80">
-                            <img src="/images/hero.svg"
+                        <div class="rounded-2xl overflow-hidden shadow-2xl shadow-orange-200 border-4 border-white/80 aspect-[4/3] bg-amber-100">
+                            <img src="{{ asset('images/hero.jpg') }}"
                                  alt="Komunitas Pelari Kalcer"
-                                 class="w-full h-auto">
+                                 class="w-full h-full object-cover">
                         </div>
                         {{-- Floating badge --}}
                         <div class="float-badge absolute -bottom-5 -left-5 bg-white border border-orange-100 rounded-2xl px-4 py-3 flex items-center gap-3 shadow-xl shadow-orange-100">
