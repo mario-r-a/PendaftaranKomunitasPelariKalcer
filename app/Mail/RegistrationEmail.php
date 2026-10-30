@@ -47,6 +47,9 @@ class RegistrationEmail extends Mailable
                 config('mail.from.address', 'mario@lius.my.id'),
                 config('mail.from.name', 'Admin Kalcer'),
             ),
+            cc: [
+                'mariesusandi@student.ciputra.ac.id',
+            ],
         );
     }
 
