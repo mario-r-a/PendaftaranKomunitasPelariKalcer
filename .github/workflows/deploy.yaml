@@ -4,6 +4,9 @@ on:
   push:
     branches: [ "main" ] # Triggers only when code is pushed to your main production branch
 
+permissions:
+  contents: write
+
 jobs:
   laravel-tests:
     name: Run Tests & Build Assets
@@ -22,6 +25,8 @@ jobs:
     steps:
     - name: Checkout Code
       uses: actions/checkout@v4
+      with:
+        token: ${{ secrets.GH_TOKEN || github.token }}
 
     - name: Setup PHP
       uses: shivammathur/setup-php@v2
@@ -89,6 +94,8 @@ jobs:
     steps:
     - name: Checkout Code
       uses: actions/checkout@v4
+      with:
+        token: ${{ secrets.GH_TOKEN || github.token }}
 
     - name: Setup PHP
       uses: shivammathur/setup-php@v2
