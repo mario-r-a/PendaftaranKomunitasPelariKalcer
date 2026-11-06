@@ -147,10 +147,16 @@ jobs:
         password: ${{ secrets.SSH_PASSWORD }}
         port: 22
         script: |
+          set -e
           cd /home/lius-pelarikalcer/htdocs/pelarikalcer.lius.my.id
+          git reset --hard HEAD
           git pull origin main
           rm -rf vendor
           tar -xzf vendor.tar.gz
           rm -f vendor.tar.gz
+          rm -f bootstrap/cache/*.php
+          php artisan package:discover --ansi
           php artisan migrate --force
           php artisan config:cache
+          php artisan route:cache
+          php artisan view:cache
