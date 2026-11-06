@@ -5,6 +5,7 @@ namespace App\Mail;
 use Illuminate\Bus\Queueable;
 use Illuminate\Mail\Mailable;
 use Illuminate\Mail\Mailables\Address;
+use Illuminate\Mail\Mailables\Attachment;
 use Illuminate\Mail\Mailables\Content;
 use Illuminate\Mail\Mailables\Envelope;
 use Illuminate\Queue\SerializesModels;
@@ -14,9 +15,13 @@ class RegistrationEmail extends Mailable
     use Queueable, SerializesModels;
 
     public string $user_name;
+
     public string $user_email;
+
     public string $phone;
+
     public string $kategori_lari;
+
     public string $level_pengalaman;
 
     /**
@@ -29,10 +34,10 @@ class RegistrationEmail extends Mailable
         string $kategori_lari,
         string $level_pengalaman
     ) {
-        $this->user_name        = $user_name;
-        $this->user_email       = $user_email;
-        $this->phone            = $phone;
-        $this->kategori_lari    = $kategori_lari;
+        $this->user_name = $user_name;
+        $this->user_email = $user_email;
+        $this->phone = $phone;
+        $this->kategori_lari = $kategori_lari;
         $this->level_pengalaman = $level_pengalaman;
     }
 
@@ -61,10 +66,10 @@ class RegistrationEmail extends Mailable
         return new Content(
             view: 'mail-template.registration-sucessful',
             with: [
-                'user_name'        => $this->user_name,
-                'user_email'       => $this->user_email,
-                'phone'            => $this->phone,
-                'kategori_lari'    => $this->kategori_lari,
+                'user_name' => $this->user_name,
+                'user_email' => $this->user_email,
+                'phone' => $this->phone,
+                'kategori_lari' => $this->kategori_lari,
                 'level_pengalaman' => $this->level_pengalaman,
             ],
         );
@@ -73,7 +78,7 @@ class RegistrationEmail extends Mailable
     /**
      * Get the attachments for the message.
      *
-     * @return array<int, \Illuminate\Mail\Mailables\Attachment>
+     * @return array<int, Attachment>
      */
     public function attachments(): array
     {

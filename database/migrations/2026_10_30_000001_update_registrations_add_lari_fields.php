@@ -16,10 +16,10 @@ return new class extends Migration
             if (Schema::hasColumn('registrations', 'distance')) {
                 $table->dropColumn('distance');
             }
-            if (!Schema::hasColumn('registrations', 'kategori_lari')) {
+            if (! Schema::hasColumn('registrations', 'kategori_lari')) {
                 $table->string('kategori_lari')->after('phone');
             }
-            if (!Schema::hasColumn('registrations', 'level_pengalaman')) {
+            if (! Schema::hasColumn('registrations', 'level_pengalaman')) {
                 $table->string('level_pengalaman')->after('kategori_lari');
             }
         });

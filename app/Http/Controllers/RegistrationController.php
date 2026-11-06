@@ -34,10 +34,10 @@ class RegistrationController extends Controller
         return redirect()
             ->route('registration.success')
             ->with('registration', [
-                'name'             => $registration->name,
-                'email'            => $registration->email,
-                'phone'            => $registration->phone,
-                'kategori_lari'    => $registration->kategori_lari,
+                'name' => $registration->name,
+                'email' => $registration->email,
+                'phone' => $registration->phone,
+                'kategori_lari' => $registration->kategori_lari,
                 'level_pengalaman' => $registration->level_pengalaman,
             ]);
     }

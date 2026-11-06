@@ -3,16 +3,17 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Carbon;
 
 /**
  * @property int $id
  * @property string $name
  * @property string $email
  * @property string $phone
- * @property string $kategori_lari   5K | 10K | Half Marathon (21K) | Full Marathon (42K)
+ * @property string $kategori_lari 5K | 10K | Half Marathon (21K) | Full Marathon (42K)
  * @property string $level_pengalaman Pemula | Menengah | Berpengalaman
- * @property \Illuminate\Support\Carbon|null $created_at
- * @property \Illuminate\Support\Carbon|null $updated_at
+ * @property Carbon|null $created_at
+ * @property Carbon|null $updated_at
  */
 class Registration extends Model
 {
