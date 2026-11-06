@@ -7,6 +7,7 @@ use App\Mail\RegistrationEmail;
 use App\Models\Registration;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Support\Facades\Mail;
+use Illuminate\View\View;
 
 class RegistrationController extends Controller
 {
@@ -45,7 +46,7 @@ class RegistrationController extends Controller
     /**
      * Tampilkan halaman konfirmasi pendaftaran berhasil.
      */
-    public function success()
+    public function success(): RedirectResponse|View
     {
         // Jika tidak ada data di session (akses langsung URL), redirect ke home
         if (! session()->has('registration')) {
