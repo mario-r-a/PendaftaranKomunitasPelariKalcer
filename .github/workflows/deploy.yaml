@@ -34,7 +34,7 @@ jobs:
     - name: Setup Node.js
       uses: actions/setup-node@v4
       with:
-        node-version: '20'
+        node-version: '22'
 
     - name: Copy Environment File
       run: php -r "file_exists('.env') || copy('.env.example', '.env');"
@@ -55,7 +55,7 @@ jobs:
     # Compile frontend production assets (Vite) before running tests (tests need manifest.json)
     - name: Install NPM Dependencies & Build Assets
       run: |
-        npm ci
+        npm install --prefer-offline --no-audit
         npm run build
 
     - name: Run Migrations & Tests
